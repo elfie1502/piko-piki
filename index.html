@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The World of Piko Piki</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Music (JJ Heller - Happy Birthday Song) -->
+  <audio id="bg-music" loop>
+    <source src="assets/birthday-song.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Music Toggle Button -->
+  <button id="music-toggle" class="music-toggle" type="button" title="Play music">
+    <span id="music-icon">🔇</span>
+  </button>
+
+  <!-- ০১. Welcome Screen -->
+  <section id="welcome-screen" class="welcome-screen">
+    <div class="welcome-content">
+      <p class="eyebrow">A LITTLE DIGITAL ADVENTURE</p>
+
+      <div class="welcome-cat">
+        <div class="css-flower-cat">
+          <div class="ear left"></div>
+          <div class="ear right"></div>
+          <div class="head">
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="nose-mouth"></div>
+            <div class="whiskers-left"><span></span><span></span></div>
+            <div class="whiskers-right"><span></span><span></span></div>
+          </div>
+          <div class="body-cat">
+            <div class="held-flower">
+              <div class="stem"></div>
+              <div class="leaf"></div>
+              <div class="petals">
+                <span class="p1"></span><span class="p2"></span>
+                <span class="p3"></span><span class="p4"></span>
+              </div>
+              <div class="center-core"></div>
+            </div>
+            <div class="arms">
+              <div class="arm left"></div>
+              <div class="arm right"></div>
+            </div>
+          </div>
+          <div class="tail"></div>
+        </div>
+      </div>
+
+      <h1>The World of<br><span>Piko Piki</span></h1>
+      <p class="welcome-tagline">Follow the paws. Find the memories.</p>
+      <button id="start-button" class="begin-button">Let's begin <span>→</span></button>
+      <p class="welcome-footnote">A tiny adventure awaits...</p>
+    </div>
+    <span class="decoration decoration-one">✿</span>
+    <span class="decoration decoration-two">♡</span>
+    <span class="decoration decoration-three">✧</span>
+  </section>
+
+  <!-- ০২. Dashboard -->
+  <section id="dashboard-screen" class="welcome-screen hidden">
+    <div class="welcome-content">
+      <button id="back-to-home-btn" class="back-link" type="button">Back to home</button>
+
+      <p class="eyebrow">YOUR DASHBOARD</p>
+      <h2 style="font-size: 2.5rem; margin-bottom: 30px; color: #76608f;">Choose an Adventure</h2>
+
+      <div style="display: grid; gap: 20px; max-width: 500px; margin: 0 auto; width: 100%;">
+
+        <div class="adventure-card" data-target="quest-section"
+             style="background: white; padding: 24px; border-radius: 20px; border: 1px solid #E5DCEB; cursor: pointer; transition: transform 0.2s; text-align: center;">
+          <span style="font-size: 2.5rem;">🐾</span>
+          <h3 style="color: #76608f; margin: 10px 0 5px;">Detective Desk</h3>
+          <p style="color: #6D6476; font-size: 14px;">Solve riddles from Piko Piki.</p>
+        </div>
+
+        <div id="gallery-card" class="adventure-card locked-card" data-target="nature-section"
+             style="background: white; padding: 24px; border-radius: 20px; border: 1px solid #E5DCEB; cursor: pointer; transition: transform 0.2s; text-align: center;">
+          <span class="card-icon">🔒</span>
+          <h3 style="color: #76608f; margin: 10px 0 5px;">Through Your Lens</h3>
+          <p style="color: #9b8aa8; font-size: 14px;">🔒 Locked! Complete the quest to unlock.</p>
+        </div>
+
+        <div id="guess-card" class="adventure-card locked-card" data-target="guess-screen"
+             style="background: white; padding: 24px; border-radius: 20px; border: 1px solid #E5DCEB; cursor: pointer; transition: transform 0.2s; text-align: center;">
+          <span class="card-icon">🔒</span>
+          <h3 style="color: #76608f; margin: 10px 0 5px;">Guess a Memory</h3>
+          <p style="color: #9b8aa8; font-size: 14px;">🔒 Locked! Complete Through Your Lens first.</p>
+        </div>
+
+        <div id="booth-card" class="adventure-card locked-card" data-target="booth-screen"
+             style="background: white; padding: 24px; border-radius: 20px; border: 1px solid #E5DCEB; cursor: pointer; transition: transform 0.2s; text-align: center;">
+          <span class="card-icon">🔒</span>
+          <h3 style="color: #76608f; margin: 10px 0 5px;">Memory Booth</h3>
+          <p style="color: #9b8aa8; font-size: 14px;">🔒 Locked! Complete Guess a Memory first.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ০৩. Detective Desk -->
+  <section id="quest-section" class="welcome-screen adventure-page hidden">
+    <div class="welcome-content" style="max-width: 650px; margin: 0 auto;">
+      <button class="back-button back-link" type="button">Back to adventures</button>
+
+      <p class="eyebrow">01 / THE ADVENTURE</p>
+      <h2 style="font-size: 2.5rem; color: #76608f; margin-bottom: 5px;">Detective Desk 🐾</h2>
+      <p style="color: #6D6476; margin-bottom: 20px;">Three little clues. One lovely adventure.</p>
+
+      <div class="quest-progress" style="margin: 30px auto; width: 100%;">
+        <div class="quest-progress-top">
+          <span id="quest-progress-text">Clue 1 of 3</span>
+          <span id="quest-score">0 / 3 found</span>
+        </div>
+        <div class="quest-progress-track">
+          <div id="quest-progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="quest-card-box" style="margin: 0 auto; width: 100%;">
+        <div class="quest-mascot" style="font-style: normal;">🐾</div>
+        <p class="eyebrow">A NOTE FROM PIKO PIKI</p>
+        <h3 id="quest-title">The First Little Mystery</h3>
+        <p id="quest-question" style="color: #393044; font-size: 16px;">I'm full of pages, but I'm not a tree. What am I?</p>
+
+        <div id="quest-options" class="quest-options"></div>
+        <p id="quest-feedback" aria-live="polite"></p>
+        <button id="quest-next" class="begin-button hidden">Next clue <span>→</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ০৪. Through Your Lens -->
+  <section id="nature-section" class="welcome-screen adventure-page hidden">
+    <div class="welcome-content" style="max-width: 1000px; margin: 0 auto;">
+
+      <div class="section-header">
+        <button class="back-button back-link" type="button">Back to adventures</button>
+        <p class="lens-eyebrow">A LITTLE COLLECTION OF BEAUTY</p>
+        <h1>Through Your Lens</h1>
+        <p class="lens-subtitle">Little things, quiet places, and the beauty you noticed.</p>
+        <div class="lens-flower">✿</div>
+      </div>
+
+      <div class="photo-grid">
+        <div class="photo-card">
+          <img src="assets/nature-1.jpg" alt="">
+          <p class="photo-caption">01 · A sky full of little dreams.</p>
+        </div>
+        <div class="photo-card">
+          <img src="assets/nature-2.jpg" alt="">
+          <p class="photo-caption">02 · Somewhere, time moves slowly.</p>
+        </div>
+        <div class="photo-card">
+          <img src="assets/nature-3.jpg" alt="">
+          <p class="photo-caption">03 · Beauty hides in the little things.</p>
+        </div>
+        <div class="photo-card">
+          <img src="assets/nature-4.jpg" alt="">
+          <p class="photo-caption">04 · A little bit of magic after dark.</p>
+        </div>
+        <div class="photo-card">
+          <img src="assets/nature-5.jpg" alt="">
+          <p class="photo-caption">05 · Collecting moments, not things.</p>
+        </div>
+      </div>
+
+      <div class="lens-footer">The world is full of little beautiful things. ♡</div>
+
+      <div style="text-align: center; margin: 40px 0 60px;">
+        <button id="unlock-guess-btn" class="begin-button">
+          Continue to Guess a Memory <span>→</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ০৫. Guess a Memory -->
+  <section id="guess-screen" class="welcome-screen adventure-page hidden">
+    <div class="welcome-content" style="max-width: 650px; margin: 0 auto;">
+      <button class="back-button back-link" type="button">Back to adventures</button>
+      <p class="eyebrow">02 / PHOTO GUESSING</p>
+      <h2>Guess a Memory 📸</h2>
+
+      <div class="quest-progress" style="margin: 20px auto; width: 100%;">
+        <div class="quest-progress-top">
+          <span id="guess-progress-text">Photo 1 of 2</span>
+          <span id="guess-score">0 / 2 revealed</span>
+        </div>
+        <div class="quest-progress-track">
+          <div id="guess-progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="quest-card-box">
+        <div class="guess-grid">
+          <div class="blur-container">
+            <img id="guess-pic-1" src="assets/cat-1.jpg" alt="Blurred Cat 1" class="blurred-pic">
+          </div>
+          <div class="blur-container">
+            <img id="guess-pic-2" src="assets/cat-2.jpg" alt="Blurred Cat 2" class="blurred-pic">
+          </div>
+        </div>
+
+        <h3 id="guess-question-text" style="margin-top: 25px; color: #76608F; font-size: 24px;">Where is this little friend hiding?</h3>
+
+        <div id="guess-options-box" class="quest-options"></div>
+        <p id="guess-feedback" aria-live="polite" class="feedback-msg"></p>
+
+        <button id="guess-next-btn" class="begin-button hidden">Proceed to Scrapbook <span>→</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ০৬. Memory Scrapbook 🎀 -->
+  <section id="scrapbook-screen" class="welcome-screen adventure-page hidden">
+    <div class="welcome-content" style="max-width: 700px; margin: 0 auto;">
+      <button class="back-button back-link" type="button">Back to adventures</button>
+
+      <p class="eyebrow">03 / CREATIVE CORNER</p>
+      <h2>Memory Scrapbook 🎀</h2>
+      <p style="color: #6D6476; margin-bottom: 25px;">Decorate your little memories beautifully.</p>
+
+      <div class="scrapbook-wrapper">
+        <div id="scrapbook-canvas" class="scrapbook-paper">
+          <div class="polaroid" id="polaroid-1">
+            <div class="tape tape-top"></div>
+            <img id="scrapbook-pic-1" src="assets/cat-1.jpg" alt="Memory 1">
+            <p class="polaroid-caption">A tiny explorer 🌿</p>
+          </div>
+
+          <div class="polaroid" id="polaroid-2">
+            <div class="tape tape-top"></div>
+            <img id="scrapbook-pic-2" src="assets/cat-2.jpg" alt="Memory 2">
+            <p class="polaroid-caption">Little sunbather ☀️</p>
+          </div>
+
+          <div id="canvas-decorations"></div>
+        </div>
+
+        <div class="scrapbook-toolbox">
+          <div class="toolbox-group">
+            <span class="tool-label">Stickers:</span>
+            <button class="tool-btn" data-val="🌿">🌿</button>
+            <button class="tool-btn" data-val="☀️">☀️</button>
+            <button class="tool-btn" data-val="🐾">🐾</button>
+            <button class="tool-btn" data-val="💚">💚</button>
+            <button class="tool-btn" data-val="⭐">⭐</button>
+            <button class="tool-btn" data-val="🎀">🎀</button>
+            <button class="tool-btn" data-val="🌸">🌸</button>
+            <button class="tool-btn" data-val="✨">✨</button>
+          </div>
+
+          <div class="toolbox-group" style="margin-top: 12px;">
+            <span class="tool-label">Frames:</span>
+            <button class="frame-btn" data-frame="polaroid">Polaroid</button>
+            <button class="frame-btn" data-frame="rounded">Rounded</button>
+            <button class="frame-btn" data-frame="vintage">Vintage</button>
+            <button class="frame-btn" data-frame="clear">Clear</button>
+          </div>
+
+          <div class="toolbox-group" style="margin-top: 12px;">
+            <span class="tool-label">Note:</span>
+            <input type="text" id="memory-note-input" class="memory-note-input" placeholder="Write a little note..." maxlength="40">
+            <button id="add-note-btn" class="tool-btn">Add 💌</button>
+          </div>
+
+          <div class="toolbox-group" style="margin-top: 12px;">
+            <span class="tool-label">Clear:</span>
+            <button id="clear-stickers-btn" class="tool-btn">Remove All Stickers</button>
+            <button id="clear-notes-btn" class="tool-btn">Remove All Notes</button>
+          </div>
+        </div>
+
+        <button id="scrapbook-finish-btn" class="begin-button" style="margin-top: 25px;">
+          Save this memory 🎀
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ০৭. Memory Booth 📸 -->
+  <section id="booth-screen" class="welcome-screen adventure-page hidden">
+    <div class="welcome-content" style="max-width: 1000px; margin: 0 auto;">
+      <div class="section-header">
+        <button class="back-button back-link" type="button">Back to adventures</button>
+        <p class="lens-eyebrow">04 / A LITTLE SURPRISE</p>
+        <h1>Memory Booth 📸</h1>
+        <p class="lens-subtitle">Little moments, little memories, all yours. ♡</p>
+        <div class="lens-flower">✿</div>
+      </div>
+
+      <div class="photo-grid booth-grid">
+        <div class="photo-card">
+          <img src="assets/memory-1.jpg" alt="">
+          <p class="photo-caption">01 · The sky was pink, and so was the moment.</p>
+        </div>
+        <div class="photo-card">
+          <img src="assets/memory-2.jpg" alt="">
+          <p class="photo-caption">02 · Golden hour, golden memories.</p>
+        </div>
+        <div class="photo-card">
+          <img src="assets/memory-3.jpg" alt="">
+          <p class="photo-caption">03 · Beauty in every shade of pink.</p>
+        </div>
+        <div class="photo-card">
+          <img src="assets/memory-4.jpg" alt="">
+          <p class="photo-caption">04 · Even with masks, our smiles were visible.</p>
+        </div>
+      </div>
+
+      <div class="lens-footer">Every memory is a little piece of us. ♡</div>
+
+      <div style="text-align: center; margin: 40px 0 60px;">
+        <button id="finish-btn" class="begin-button">
+          Final surprise <span>→</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ০৮. The Final Letter 💌 -->
+  <section id="letter-screen" class="welcome-screen adventure-page hidden">
+    <div class="welcome-content" style="max-width: 800px; margin: 0 auto;">
+      <div class="section-header">
+        <button class="back-button back-link" type="button">Back to adventures</button>
+        <p class="lens-eyebrow">05 / THE FINAL SURPRISE</p>
+        <h1>A Letter For You 💌</h1>
+        <p class="lens-subtitle">Some words are too special for a text.</p>
+        <div class="lens-flower">✿</div>
+      </div>
+
+      <div class="envelope-wrapper" id="envelope-wrapper">
+        <div class="envelope" id="envelope">
+          <div class="envelope-flap"></div>
+          <div class="envelope-body">
+            <div class="envelope-seal"><span>♡</span></div>
+          </div>
+        </div>
+        <p class="envelope-hint">Tap to open 💌</p>
+      </div>
+
+      <div class="letter-wrapper hidden" id="letter-wrapper">
+        <div class="letter-paper">
+          <div class="paper-cat cat-top">🐈</div>
+          <div class="paper-flowers flowers-top">🌷 ✿ 🌼</div>
+
+          <div class="paper-heading">a little letter for you ♡</div>
+
+          <div class="letter-content">
+            <p class="letter-text">To the brightest star ✨</p>
+            <p class="letter-text">Cheers to another trip around the sun, twino! 🎂</p>
+            <p class="letter-text">May your light shine even more beautifully this chapter.</p>
+            <p class="letter-text">Sending u lots of duas and a bunch of love! 💗</p>
+            <p class="letter-text">Keep smiling always and spread your sparkle everywhere ✨</p>
+            <p class="letter-signature">With all my heart,<br><span>Your Twino 🐾</span></p>
+          </div>
+
+          <div class="paper-flowers flowers-bottom">🌼 🌷 ✿</div>
+          <div class="paper-cat cat-bottom">🐱</div>
+          <div class="paper-footer">made with love & little paws</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="adventure-content" class="hidden"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
