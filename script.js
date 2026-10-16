@@ -529,9 +529,9 @@ const musicIcon = document.getElementById("music-icon");
 
 let isMusicPlaying = false;
 
-// 🎵 Song configuration
-const SONG_START_TIME = 0;   // Start from 15 sec
-const SONG_END_TIME = 62;     // Stop at 50 sec (35 sec play)
+// 🎵 Song configuration — 0 sec theke 1:02 (62 sec) porjonto
+const SONG_START_TIME = 0;    // Start from beginning
+const SONG_END_TIME = 62;     // Stop at 1:02
 
 function playMusic() {
   if (!bgMusic) return;
@@ -555,7 +555,7 @@ function pauseMusic() {
   musicIcon.textContent = "🔇";
 }
 
-// 🎵 Auto-stop at end time
+// 🎵 Auto-stop at 1:02
 if (bgMusic) {
   bgMusic.addEventListener("timeupdate", () => {
     if (bgMusic.currentTime >= SONG_END_TIME) {
