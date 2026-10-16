@@ -106,7 +106,7 @@ document.querySelectorAll(".back-button").forEach((button) => {
 const questData = [
   {
     title: "The First Little Mystery",
-    question: "I'm full of pages, but I'm not a tree. What am I?",
+    question: "I'm full of leaves, but I'm not a tree. What am I?",
     options: [
       { text: "A flower", answer: "flower" },
       { text: "A book", answer: "book" },
